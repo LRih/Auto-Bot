@@ -1,0 +1,78 @@
+[General Info]
+
+[Commands]
+left>{x},{y}
+- moves the mouse to point x,y and left click
+ldown>{x},{y}
+- moves the mouse to point x,y and depress left mouse button
+lup>
+- releases left mouse button
+right>{x},{y}
+- moves the mouse to point x,y and right click
+move>{x},{y}
+- moves the mouse to point x,y
+
+wait>{time}\r\n
+- wait 'time' in milliseconds
+waituntil>{x},{y},{color}
+- wait until point x,y is the color {color} with 10 sec. timeout
+waitwhile>{x},{y},{color}
+- wait while point x,y is the color {color} with 30 sec. timeout
+
+waitbright>{x},{y},{brightness}
+- wait until point x,y is the brighter that {brightness} with 10 sec. timeout. takes values 0-100
+waitdark>{x},{y},{brightness}
+- wait until point x,y is the darker that {brightness} with 10 sec. timeout. takes values 0-100
+
+type>"{text}" (currently not functioning)
+- automatically type text encased in quotation marks
+speed>{speed}
+- set the speed of mouse movement, default is 20
+
+[Type Command]
+type>"{text}" (currently not functioning)
+
+Supported characters:
+- all alphanumeric
+- ENTER: \r\n
+- TAB: \r\n
+
+Unsupported characters:
+- uppercase letters
+
+[Commenting]
+Use the '#' character to start commenting until the end of the line.
+
+Sample:
+# This text is ignored
+left>200,400 # This text is ignored
+
+[Functions]
+func({name})
+{
+  {command_1}
+  {command_2}
+  ...
+  {command_n}
+}
+
+- functions can replace a group of repeatedly used commands
+
+Sample code without functions:
+wait>1000
+left>200,400
+wait>1000
+left>200,400
+
+Sample code with functions:
+func(wait_and_click)> wait>1000; left>200,400
+wait_and_click
+wait_and_click
+
+[Hotkeys]
+F2: insert waituntil command in code using current mouse coordinates and the color of selected pixel.
+F4: insert waitbright command in code using current mouse coordinates and the color of selected pixel.
+F8: insert left command in code using current mouse coordinates.
+F9: insert right command in code using current mouse coordinates.
+F10: insert wait command of 1 second in code.
+F11: start and stop macro.
